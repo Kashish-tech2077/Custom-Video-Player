@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
+</head>
+
+<body>
+
+    <header id="videoHeader">
+        <h1>Custom Video Player</h1>
+    </header>
+
+    <main id="mainContainer">
+        <!-- CRITICAL CHANGE: The entire player is now wrapped cleanly inside #videoBox -->
+        <div id="videoBox">
+            <video id="video" src="./Assets/Nature-video.mp4"></video>
+
+            <div class="skipFeedback" id="skipBackward">&lt;&lt; 10</div>
+            <div class="skipFeedback" id="skipForward">10 &gt;&gt;</div>
+
+            <!-- Moved inside #videoBox so it overlays the video natively -->
+            <div id="videoControls">
+                <div id="basicControls">
+                    <i class="commonControlsIcon fa-solid fa-play" id="playBtn"></i>
+                    <i class="commonControlsIcon fa-solid fa-pause" id="pauseBtn"></i>
+                    <i class="commonControlsIcon fa-solid fa-rotate-left" id="tenPrevious"></i>
+                    <i class="commonControlsIcon fa-solid fa-rotate-right" id="tenNext"></i>
+                </div>
+
+                <div id="seekBarBox">
+                    <p id="currentTimeStamp" class="timeStamp commonControlInfo">0:00</p>
+                    <input type="range" name="seekBar" id="seekBar" min="0" value="0">
+                    <p id="videoTimeStamp" class="timeStamp commonControlInfo">0:00</p>
+                </div>
+
+                <div id="otherControls">
+                    <div id="playbackSpeedContainer">
+                        <select id="speedDropdown">
+                            <option value="0.2">0.2x</option>
+                            <option value="0.5">0.5x</option>
+                            <option value="0.7">0.7x</option>
+                            <option value="1" selected>1.0x</option>
+                            <option value="1.2">1.2x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="1.7">1.7x</option>
+                            <option value="2">2.0x</option>
+                        </select>
+                    </div>
+
+                    <div id="volumeContainer">
+                        <input type="range" name="volumeSlider" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+                        <i class="fa-solid fa-volume-low volumeIcons" id="volumeLow"></i>
+                        <i class="fa-solid fa-volume-high volumeIcons" id="volumeHigh"></i>
+                        <i class="fa-solid fa-volume-xmark volumeIcons" id="volumeMute"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+    <script src="https://kit.fontawesome.com/3dd7962506.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

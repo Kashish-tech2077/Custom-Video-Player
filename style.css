@@ -1,0 +1,288 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+    background-color: #0f0f12;
+    /* Sleek dark environment */
+    color: #ffffff;
+}
+
+html {
+    font-size: 16px;
+    /* Scaled slightly down for modern layouts */
+}
+
+/* Iconic element configurations */
+.commonControlsIcon {
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.commonControlsIcon:hover {
+    color: #3b82f6;
+    /* Subtle modern accent blue highlight */
+    transform: scale(1.1);
+}
+
+.commonControlInfo {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ------------------------- header styling ----------------------------- */
+#videoHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #16161a;
+    border-bottom: 1px solid #24242e;
+}
+
+#videoHeader h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* ------------------------- main container styling ----------------------------- */
+#mainContainer {
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: #0f0f12;
+}
+
+#videoBox {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16/9;
+    background-color: #000000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Overlay controls directly onto the bottom of the video window */
+#videoControls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show player controls immediately when cursor acts over the video window frame */
+#videoBox:hover #videoControls {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#basicControls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+#seekBarBox {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    gap: 10px;
+}
+
+/* Modern Cross-Browser Slider Style Rules */
+#seekBar {
+    flex-grow: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: height 0.1s ease;
+}
+
+#seekBar:hover {
+    height: 6px;
+}
+
+#seekBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #3b82f6;
+    transition: transform 0.1s;
+}
+
+#seekBar:hover::-webkit-slider-thumb {
+    transform: scale(1.5);
+}
+
+#otherControls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#pauseBtn {
+    display: none;
+}
+
+/* Skip Feedback Animation Positioning Rules */
+.skipFeedback {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 5;
+}
+
+#skipBackward {
+    left: 15%;
+}
+
+#skipForward {
+    right: 15%;
+}
+
+.skipFeedback.active {
+    animation: fadeAndVanish 1000ms ease-in-out;
+}
+
+@keyframes fadeAndVanish {
+    0% {
+        opacity: 0;
+        visibility: visible;
+        transform: translateY(-50%) scale(0.8);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-50%) scale(0.9);
+    }
+}
+
+/* -------------------------- Volume Styling -------------------------- */
+#volumeContainer {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    /* Create a secure hover bridge area extending upwards */
+    padding-top: 140px;
+    margin-top: -140px;
+}
+
+#volumeSlider {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+
+    /* Use the browser's native vertical engine so clicks and drags line up perfectly */
+    writing-mode: vertical-lr;
+    direction: rtl;
+
+    /* Native vertical compatibility handles for Chrome, Safari, Firefox */
+    appearance: slider-vertical;
+    -webkit-appearance: slider-vertical;
+
+    position: absolute;
+    top: 10px;
+    /* Positions it nicely inside your 140px hover zone */
+    height: 110px;
+    z-index: 5000;
+    cursor: pointer;
+}
+
+#volumeContainer:hover #volumeSlider {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.volumeIcons {
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: auto;
+    /* Pushes the icon to the very bottom of the flex column container */
+}
+
+#volumeLow,
+#volumeMute {
+    display: none;
+}
+
+/* -------------------------- Playback Dropdown Design overrides -------------------------- */
+#speedDropdown {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 4px 8px;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#speedDropdown:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#speedDropdown option {
+    background-color: #16161a;
+    color: white;
+}

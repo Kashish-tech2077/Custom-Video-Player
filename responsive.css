@@ -1,0 +1,81 @@
+/* -------------------------- Responsive Breakdown -------------------------- */
+
+/* Tablet & Mobile Devices (Screens below 768px wide) */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+        /* Automatically scales down all rem units */
+    }
+
+    #videoBox {
+        border-radius: 0px;
+        /* Flush presentation looks cleaner on mobile viewports */
+    }
+
+    #videoControls {
+        height: auto;
+        padding: 15px 10px;
+        flex-wrap: wrap;
+        /* Allows components to drop nicely to rows if needed */
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.9);
+        /* High contrast backdrop for outdoor visibility */
+    }
+
+    #seekBarBox {
+        width: 100%;
+        /* Forces the time seekbar to span the top row completely */
+        order: -1;
+        /* Snaps progress bar directly above control action icons */
+        margin: 0 0 5px 0;
+    }
+
+    #basicControls {
+        gap: 14px;
+    }
+
+    /* Transform Vertical Volume Slider into a Touch-Friendly Horizontal Slider */
+    /* #volumeContainer {
+        padding-top: 0;
+        margin-top: 0;
+        flex-direction: row-reverse;
+        gap: 8px;
+    }
+
+    #volumeSlider {
+        position: static;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+        width: 60px;
+        height: 4px;
+        appearance: none;
+        -webkit-appearance: none;
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    #volumeSlider::-webkit-slider-thumb {
+        width: 12px;
+        height: 12px;
+    } */
+
+    #otherControls {
+        gap: 12px;
+    }
+
+    #speedDropdown {
+        padding: 3px 6px;
+    }
+}
+
+/* Micro Smartphone Screen Configurations (Screens below 480px wide) */
+@media (max-width: 480px) {
+    #volumeSlider {
+        display: none;
+        /* Hide slider completely on micro views to maximize layout space */
+    }
+
+    #basicControls {
+        gap: 10px;
+    }
+}
