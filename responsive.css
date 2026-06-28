@@ -33,39 +33,41 @@
     #basicControls {
         gap: 14px;
     }
-
-    /* Transform Vertical Volume Slider into a Touch-Friendly Horizontal Slider */
-    /* #volumeContainer {
-        padding-top: 0;
-        margin-top: 0;
-        flex-direction: row-reverse;
-        gap: 8px;
+    #volumeContainer {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px;
     }
 
     #volumeSlider {
-        position: static;
-        opacity: 1;
-        pointer-events: auto;
-        transform: none;
-        width: 60px;
-        height: 4px;
-        appearance: none;
-        -webkit-appearance: none;
-        background: rgba(255, 255, 255, 0.4);
+        position: static !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        writing-mode: horizontal-tb !important;
+        direction: ltr !important;
+        appearance: auto !important;
+        -webkit-appearance: slider-horizontal !important;
+        width: 70px !important;
+        height: 6px !important;
     }
 
-    #volumeSlider::-webkit-slider-thumb {
-        width: 12px;
-        height: 12px;
-    } */
-
-    #otherControls {
-        gap: 12px;
+    .volumeIcons {
+        margin-top: 0 !important;
+        width: auto !important;
     }
+}
 
-    #speedDropdown {
-        padding: 3px 6px;
-    }
+#otherControls {
+    gap: 12px;
+}
+
+#speedDropdown {
+    padding: 3px 6px;
+}
 }
 
 /* Micro Smartphone Screen Configurations (Screens below 480px wide) */
