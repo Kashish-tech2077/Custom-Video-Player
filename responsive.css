@@ -33,6 +33,7 @@
     #basicControls {
         gap: 14px;
     }
+
     #volumeContainer {
         padding-top: 0 !important;
         margin-top: 0 !important;
@@ -67,7 +68,6 @@
 
 #speedDropdown {
     padding: 3px 6px;
-}
 }
 
 /* Micro Smartphone Screen Configurations (Screens below 480px wide) */
