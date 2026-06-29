@@ -72,10 +72,6 @@
 
 /* Micro Smartphone Screen Configurations (Screens below 480px wide) */
 @media (max-width: 480px) {
-    #volumeSlider {
-        display: none;
-        /* Hide slider completely on micro views to maximize layout space */
-    }
 
     #basicControls {
         gap: 10px;
